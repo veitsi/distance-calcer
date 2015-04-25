@@ -37,28 +37,17 @@ public class Application {
 	}
     JSONObject jsonObj = (JSONObject) obj;
     System.out.println(jsonObj);
-//    System.out.println(jsonObj.get("paramsObj"));
-//
-//    // some string
+
     JSONArray ja = (JSONArray) jsonObj.get("routes");
-    System.out.println(ja.get(0));
     jsonObj=(JSONObject) ja.get(0);
-    System.out.println(jsonObj.get("legs"));
     ja=(JSONArray) jsonObj.get("legs");
-    System.out.println(ja.get(0));
     jsonObj=(JSONObject) ja.get(0);
-    System.out.println(jsonObj.get("distance"));
     jsonObj=(JSONObject) jsonObj.get("distance");
     System.out.println(jsonObj.get("value"));
-    //ja=(JSONArray) jsonObj.get(0);
-    //ja = (JSONArray) ja.get(0);
-
-//    JsonObject jo = jsonObj.get("paramsObj");
-//    System.out.println(jo.get("three"));
-//    // four
-//
-
-//    // 100
+    //jsonObj=(JSONObject) jsonObj.get("value");
+    System.out.println(jsonObj);
+    int dist = Integer.parseInt(jsonObj.get("value").toString());
+    System.out.println("distance= "+dist);
     }
     public static String getContentOfHTTPPage(String pageAddress) throws Exception {
     	StringBuilder sb = new StringBuilder();
