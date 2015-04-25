@@ -1,16 +1,41 @@
 package hello;
 
-import org.springframework.web.client.RestTemplate;
+//import org.json.simple.*;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 public class Application {
 
-    public static void main(String args[]) {
-        RestTemplate restTemplate = new RestTemplate();
-        Page page = restTemplate.getForObject("http://graph.facebook.com/pivotalsoftware", Page.class);
-        System.out.println("Name:    " + page.getName());
-        System.out.println("About:   " + page.getAbout());
-        System.out.println("Phone:   " + page.getPhone());
-        System.out.println("Website: " + page.getWebsite());
+    public static void main(String args[])  {
+    	String json = "{\"paramsArray\": [\"first\", 100],"
+                + "\"paramsObj\": {\"one\": \"two\", \"three\": \"four\"},"
+                + "\"paramsStr\": \"some string\"}";
+    	System.out.println("json- "+json);
+
+    JSONParser parser = new JSONParser();
+
+    Object obj=null;
+	try {
+		obj = parser.parse(json);
+	} catch (ParseException e) {
+		System.out.println("error with parsing");
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+    JSONObject jsonObj = (JSONObject) obj;
+    System.out.println(jsonObj.get("paramsArray"));
+    // some string
+
+//    JsonObject jo = jsonObj.get("paramsObj");
+//    System.out.println(jo.get("three"));
+//    // four
+//
+//    JsonArray ja = jsonObj.get("paramsArray");
+//    System.out.println(ja.get(1));
+//    // 100
+
+
     }
 
 }
